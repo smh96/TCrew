@@ -1,0 +1,697 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Roster
+</title><link rel="Stylesheet" type="text/css" href="css/CWP_2006.css" /><link href="css/CWP_2006_cust.css" type="text/css" rel="Stylesheet" /><link rel="Stylesheet" type="text/css" href="css/CWP_WAPrint.css" /><meta http-equiv="Expires" content="-1"><meta http-equiv="PRAGMA" content="NO-CACHE"><meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett"></head>
+<script language="javascript" src="js/dragiframe.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+
+    function printRoster() {
+        window.print();
+    }
+
+    function GetFrameDoc(name) {
+        return document.getElementById(name).contentWindow.document || document.getElementById(name).document;
+    }
+
+    function CreatedPdf() {
+        document.getElementById('wizFrameMail').contentWindow.CreatedPdf();
+    }
+
+    function openWizard() {
+        var rostType = "notdetailed";
+
+        if (document.forms[0]["btnDetails"])
+            if (document.forms[0]["btnDetails"].checked == true)
+                rostType = "detailed";
+
+        document.getElementById('wizFrameMail').style.display = 'block';
+
+        var frameDoc = GetFrameDoc('wizFrameMail');
+
+        frameDoc.location.href = 'CWP_WizardSendRosterByMail.aspx?detailed=' + rostType;
+    }
+
+    function closeMailWizard() {
+        var frameDoc = GetFrameDoc('wizFrameMail');
+        frameDoc.location.href = "CWP_wizardNull.aspx";
+        document.getElementById('wizFrameMail').style.display = 'none';
+    }
+
+    function onChgRosterOrg() {
+        document.forms[0].pAction.value = "ShowOwnRoster";
+        document.forms[0].submit();
+
+    }
+
+    function otherPersonRoster() {
+        if (document.forms[0].dropEmps) {
+            if (document.forms[0].dropEmps.value != '-1') {
+                document.forms[0].pAction.value = "ShowOther";
+                document.forms[0].submit();
+            }
+        }
+    }
+
+    function openXML(aUrl) {
+        var sysemp = null;
+
+        if (document.forms[0].dropEmps)
+            sysemp = document.forms[0].dropEmps.value;
+
+        if (sysemp == null)
+            sysemp = document.forms[0].thisSysemp.value;
+
+        if (sysemp == -1)
+            sysemp = document.forms[0].thisSysemp.value;
+
+        window.open(aUrl + "?apage=roster&sysemp=" + sysemp, "XML", "resizable=1,width=600,height=800");
+    }
+
+    function openPdf() {
+        var rostType = "detailed";
+        var aTimeStamp = "tsRM";
+        var now = new Date();
+        var sysemp = null;
+
+        if (document.forms[0].dropEmps)
+            sysemp = document.forms[0].dropEmps.value;
+
+        if (sysemp == null)
+            sysemp = document.forms[0].thisSysemp.value;
+
+        if (sysemp == -1)
+            sysemp = document.forms[0].thisSysemp.value;
+
+        aTimeStamp = aTimeStamp + now.getFullYear().toString();
+        aTimeStamp = aTimeStamp + now.getMonth().toString();
+        aTimeStamp = aTimeStamp + now.getDay().toString();
+        aTimeStamp = aTimeStamp + now.getHours().toString();
+        aTimeStamp = aTimeStamp + now.getMinutes().toString();
+        aTimeStamp = aTimeStamp + now.getSeconds().toString();
+        aTimeStamp = aTimeStamp + now.getMilliseconds().toString();
+
+        if (document.forms[0]["btnNoDetails"])
+            if (document.forms[0]["btnNoDetails"].checked == true)
+                rostType = "notdetailed";
+
+
+        window.open("CWP_WindowRosterPDF.aspx?apage=roster&rosttype=" + rostType + "&ts=" + aTimeStamp + "&sysemp=" + sysemp, "Pdf", "resizable=1,width=600,height=800");
+    }
+    function openStructure(tableId) {
+
+        if (document.getElementById(tableId).style.display == "none") {
+            document.getElementById(tableId).style.display = "block";
+        }
+        else if (document.getElementById(tableId).style.display == "block") {
+            document.getElementById(tableId).style.display = "none";
+        }
+    }
+
+    function BlockButtons(selectedItem)
+    {
+
+        var dropList = document.getElementById("dropEmps");
+
+        var isDisabled = (dropList && selectedItem.toString() != dropList.options[dropList.selectedIndex].value.toString());
+
+            if (document.getElementById("hypDavePdf")) {
+                document.getElementById("hypDavePdf").disabled = isDisabled;
+            }
+
+            if (document.getElementById("EmailButton")) {
+                document.getElementById("EmailButton").disabled = isDisabled;
+            }
+
+            if (document.getElementById("hypAsXML")) {
+                document.getElementById("hypAsXML").disabled = isDisabled;
+            }
+    }
+    
+    
+</script>
+<body translate="no">
+    <form name="form1" method="post" action="./CWP_RosterTW.aspx?EMPNO=GUA" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="tZsLPKRbmsR2mCQR41Ns0uJ/xyYZl1zEZ8YZktL8+GBFrA5Dz/Ix524EJU/YhTD/pJib8OTQL05lhCD/04rKWyDWC2N/hyDi0nr3Kdy5YmWYIoFfC0sDXJ4nLrwkokiv00b/4pBVKakZG7lL0LVGNz+Ibjvk1S/CBzWDQr+JQEoV8bc7c0gFSss0p7b2bIX7U11FT0/0t52HjYT8s+pM51Bmq+UBmIiTB8ywsEEw1wLNUcVXiUYzbelYtzmPMFdEyhxtes2L532fIv/Gllv6rKNAYnzFCLq+33u7Haxz8qZqp74PyB6CVCkySUlw1FzV6Ybee3ORIpiakbZribbni6dBkRlmlQ4IaaUgwymljwwAAupKcDs7wr2MYw3m+kV9PJ/Mcjl/EYiC1NyZwTRcUn+MZ2VSSw22BvSjD4cova3BWLj3YNnWxyPFdFvt1Kk1EmQSig4iW+qJH757VvpHTgEZ1bF3jQLgqvJKcaACZlNW7aT9dMfVqbspyYECfJSZygNNWPNOCu2/MDCoU72QXktbcrfIkt7rqtK8mi280SmqkVu8cjY9qEg3W8VfyolrBzRuPwB6N1PKcX7ZD+JOIjQ1sXBt0KcLbDGwFZ54ueZkdnJTM6OYQJOsZ3yFL4Ug7P6HTl1czrAwyZqOWKNl3ebc9CJ29F7UXZdBUfFVk5G2OBaiZ0BS0KCrW7QB5EEvG3faegYJpod9cWASiOngnwAP7G47v3v+T8ATQwnRsLPhgzh3DzFfxwSCpShMnRIrxzVyAYHocG3CqMCFXYPCTtN8U+3Mmhca3UY3kWYzGodwUl9Tj+ZDati9NbF6nWRxiXH/Kiie3t5RbEL/WQ0zlZtVZTTf1pWaSt8SGo8iSKlFA5uWjcA2cnhBoK8RuBZvoP2QqaG0cdLvAwPicEShCYSnOygP/CDd+h0yMnRZ3FOgJ8ZCSfmB3H6iBg+uvyhQ3j7yqFYrAvfLd1o/JGFE9WTR+guRgQQ5EL/UWpyptPh5bJrXmwEhA5/DnhzvXamFnvEMEEpnZexGeWC9rr3wzeKFOdWeD1CCMlphBGQ1Wbycc/XQzpbhHRKhkej27Lytpp+tU9StYgKFq3IdF+f2K7BAq8b5IWnWEKiQVXjg4bXpj3Y/ArBfBGp5rOCWQsfUz5QvJYiePsTYxahVh+2ee8JnHh4UJaQWFC82/FAhWk/MzzdQuWkQSJObg2afZ8xL" />
+
+<script type='text/javascript'> document.onkeydown = SetFocusCtrlInt;  document.onmousedown = SetFocusCtrlInt;  function SetFocusCtrlInt(e){ var img = new Image(1,1); img.src = 'CWP_SessionCtrl.aspx'; window.clearInterval(intv); intv = window.setInterval('Reconnect()',1140000); return true;} function Reconnect() {  document.location.href='CWP_LogOut.aspx'; } var intv = window.setInterval('Reconnect()',1140000);</script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="74CBC3EE" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="UfGdYzTvW+/cedDJPBiJnFnFp0oUkuoT7lEH17N88+iOpAcCIyUG6zt7YvKBV6fDC/8el4jlsHdAXNAyQLsGb3uW1NewzHS9T/UA53+h5sUNMkMdUg1NPDD08euj1hd7/YWRAfOOt7eX6F2Lozw0wKCAmyscoEBnBck/jveCVERnIsseLBFXWO9l7/0eirL5bYFzDz7pLUQECarbx80JFg==" />
+    <input type="hidden" name="pAction" id="pAction" value="ShowOther" />
+    <input type="hidden" name="thisSysemp" id="thisSysemp" value="16351" />
+    <div>
+        <div class="hiddenItem">
+            <div>
+	
+<table id="_header__tabHeader" class="tableBorderHeader" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+		<tr>
+			<td class="bgDark" style="height:60px;width:100%;"><span id="_header__labHeaderText" class="headerLight">crew roster portal</span><br />
+            <span id="_header__labLogin" class="labelLight">Sander Haug</span></td><td class="bgLight" align="right" rowspan="2" style="width:150px;"><img id="_header__imgSabre" src="custom/cwplogo.png" border="0" /></td>
+		</tr><tr>
+			<td class="headerUnderLine" style="height:10px;"></td>
+		</tr>
+	</table>
+    <div style="text-align:center;">
+		
+        <span id="_header_lblError" style="color:Red;"></span>
+    
+	</div>
+
+</div>
+
+        </div>
+        <br />
+        <table id="_tableMaster" class="PrintWidth" cellspacing="0" cellpadding="3" border="0" style="border-collapse:collapse;">
+	<tr>
+		<td class="hiddenItem" valign="top">
+<div class="CWPMainMenu">
+<table id="_menu__tableMenu" class="menuTableBorder" cellpadding="3" border="0" style="width:150px;">
+			<tr>
+				<td class="menuCell"><a class="menuDisabled">Revision</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_Default.aspx?isinit=true">Home</a></td>
+			</tr><tr>
+				<td class="menuCellActive"><a class="menuActive" href="CWP_RosterTW.aspx?EMPNO=GUA">Roster</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_Reports.aspx">Reports</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_MyInfo.aspx">My Info</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_MySettings.aspx">My settings</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_TimeTable.aspx">Timetable</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_Links.aspx">Links</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_Logout.aspx">Logout</a></td>
+			</tr><tr>
+				<td class="menuCell"><a class="menuEnabled" href="CWP_COBSearch.aspx">Crew onboard</a></td>
+			</tr>
+		</table>
+</div></td><td class="PrintWidth" valign="top"><table id="_tableData" class="PrintWidth" border="0">
+			<tr>
+				<td class="tdBorderUnderline"><span id="_labHeader" class="headerDark">Roster</span><span id="labHeaderDesc" class="labelHeaderDesc"></span></td>
+			</tr><tr>
+				<td><table id="_tabNav" class="hiddenItem" cellpadding="4" border="0" style="width:100%;">
+					<tr>
+						<td id="_tdOrgRoster" align="left"></td><td id="_tdEmpno" align="left"></td><td valign="bottom"><table id="tableFileRoster" border="0" style="border-width:1px;border-style:Solid;width:300px;">
+							<tr>
+								<td><input type="submit" name="hypDavePdf" value="Save / Print PDF" onclick="javascript:openPdf();return false;" language="javascript" id="hypDavePdf" class="buttonBig" /><br />
+                                                        
+                                                        <br />
+                                                        </td><td><input id="btnNoDetails" type="radio" name="details" value="btnNoDetails" checked="checked" />&nbsp;
+                                                        <span id="labNoDetails">Without details</span>&nbsp;&nbsp;<br />
+                                                        <input id="btnDetails" type="radio" name="details" value="btnDetails" />&nbsp;
+                                                        <span id="labDetails">With details</span></td>
+							</tr>
+						</table></td><td style="height:25px;"></td><td id="_tdMail" align="left"></td><td valign="middle" style="width:100%;"></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td><table id="_tabRosterHeader" class="PrintWidthBorder1" cellpadding="5" border="0">
+					<tr>
+						<td class="bgDark" align="center" colspan="2"><span id="_labRosterPeriod" class="labelLight">Crew Roster 28JAN24 - 03MAR24</span></td>
+					</tr><tr>
+						<td align="left"><span id="_labDateNow">05FEB24 11:31</span></td><td align="right"><span id="_labComp">transavia.com</span></td>
+					</tr><tr>
+						<td align="left"><span id="_labCrew">GUA Sander Haug AMS FOJ 7778</span></td><td align="right"><span id="_labTimeMode">Time mode: UTC</span></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td id="_tdEmpRosterDrop"></td>
+			</tr><tr>
+				<td><table id="_tabRoster" class="PrintWidthBorder1" cellspacing="1" cellpadding="0" border="0">
+					<tr class="RosterHeader">
+						<td></td><th class="RosterRowCheckin">Checkin</th><th class="RosterRowActivity">Activity</th><th class="RosterRowStart">Start</th><th class="RosterRowDep">Dep</th><th class="RosterRowArr">Arr</th><th class="RosterRowEnd">End</th><th class="RosterRowCheckout">Checkout</th><th class="RosterRowAcType">AcType</th><th class="RosterRowAcVersion">AcVersion</th><th class="RosterRowDutyDesig">DD</th><th class="RosterRowAsgCat">Cat</th><th class="RosterRowActivity">LE</th>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">VA</td><td class="RosterRowStart">SUN 28JAN24 05:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 29JAN24 05:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140015_27369748&#39;);"><img id="img_cob_91140015_27369748" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">MON 29JAN24 17:00</td><td class="RosterRowActivity">HV6591</td><td class="RosterRowStart">MON 29JAN24 18:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">SZG</td><td class="RosterRowEnd">MON 29JAN24 19:35</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140015_27369748" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6591</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>WAM</td><td>van Walt Meijer,  Maarten</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>DSY</td><td>Dekker, Sylke</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>VCE</td><td>Réveillac, Sophie</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>VAO</td><td>Ootes, Varinia</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>GDU</td><td>van der Gun, Dana</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140014_27369633&#39;);"><img id="img_cob_91140014_27369633" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6592</td><td class="RosterRowStart">MON 29JAN24 20:20</td><td class="RosterRowDep">SZG</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 29JAN24 22:05</td><td class="RosterRowCheckout">MON 29JAN24 22:35</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140014_27369633" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6592</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>WAM</td><td>van Walt Meijer,  Maarten</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>DSY</td><td>Dekker, Sylke</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>VCE</td><td>Réveillac, Sophie</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>VAO</td><td>Ootes, Varinia</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>GDU</td><td>van der Gun, Dana</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">TUE 30JAN24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">WED 31JAN24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">WED 31JAN24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">THU 01FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">THU 01FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">FRI 02FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140017_27368802&#39;);"><img id="img_cob_91140017_27368802" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">FRI 02FEB24 05:20</td><td class="RosterRowActivity">HV6411</td><td class="RosterRowStart">FRI 02FEB24 06:20</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">NAP</td><td class="RosterRowEnd">FRI 02FEB24 08:45</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140017_27368802" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6411</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>MBV</td><td>Boevé, Marco (Marinus)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>NGY</td><td>Negrijn, Jennifer</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td>K</td><td>USM</td><td>Ursem, Koen</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>AAE</td><td>Arendsen, Astrid</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>KYV</td><td>ter Averst, Kaylee</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">INI</td><td>V</td><td>KSW</td><td>Klooswijk, Amber</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140016_27368712&#39;);"><img id="img_cob_91140016_27368712" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6412</td><td class="RosterRowStart">FRI 02FEB24 09:30</td><td class="RosterRowDep">NAP</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">FRI 02FEB24 12:15</td><td class="RosterRowCheckout">FRI 02FEB24 14:30</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140016_27368712" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6412</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>MBV</td><td>Boevé, Marco (Marinus)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>NGY</td><td>Negrijn, Jennifer</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td>K</td><td>USM</td><td>Ursem, Koen</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>AAE</td><td>Arendsen, Astrid</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>KYV</td><td>ter Averst, Kaylee</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">INI</td><td>V</td><td>KSW</td><td>Klooswijk, Amber</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Day Notes" href="javascript:openStructure(&#39;daynote2_91596803_5274522&#39;);"><img id="img_daynote2_91596803_5274522" src="img/info.png" border="0" /></a></td><td class="RosterRowCheckin">SAT 03FEB24 13:45</td><td class="RosterRowActivity">CBM</td><td class="RosterRowStart">SAT 03FEB24 13:45</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">RTM</td><td class="RosterRowEnd">SAT 03FEB24 14:30</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="16"><table id="daynote2_91596803_5274522" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/info.png" border="0" /></td><td class="labelLight" align="center" colspan="5">Day Notes - 03FEB24</td>
+							</tr><tr class="selectrow1">
+								<td></td><td>B3 CI 1440z - CO 2140z </td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91596806_27359174&#39;);"><img id="img_cob_91596806_27359174" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">SAT 03FEB24 14:30</td><td class="RosterRowActivity">HV5053</td><td class="RosterRowStart">SAT 03FEB24 15:30</td><td class="RosterRowDep">RTM</td><td class="RosterRowArr">ALC</td><td class="RosterRowEnd">SAT 03FEB24 17:55</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73W</td><td class="RosterRowAcVersion">73W</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91596806_27359174" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5053</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>BIF</td><td>Bruikman, Frans (Franciscus)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>KVI</td><td>Koens, Kevin</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>LXS</td><td>Jansen, Ilse</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>VTM</td><td>Versteeg, Emma</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91596805_27359081&#39;);"><img id="img_cob_91596805_27359081" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV5054</td><td class="RosterRowStart">SAT 03FEB24 18:45</td><td class="RosterRowDep">ALC</td><td class="RosterRowArr">RTM</td><td class="RosterRowEnd">SAT 03FEB24 21:20</td><td class="RosterRowCheckout">SAT 03FEB24 21:50</td><td class="RosterRowAcType">73W</td><td class="RosterRowAcVersion">73W</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91596805_27359081" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5054</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>BIF</td><td>Bruikman, Frans (Franciscus)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>KVI</td><td>Koens, Kevin</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>LXS</td><td>Jansen, Ilse</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>VTM</td><td>Versteeg, Emma</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">CBM</td><td class="RosterRowStart">SAT 03FEB24 21:50</td><td class="RosterRowDep">RTM</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 03FEB24 22:35</td><td class="RosterRowCheckout">SAT 03FEB24 22:35</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Day Notes" href="javascript:openStructure(&#39;daynote2_91602449_5333877&#39;);"><img id="img_daynote2_91602449_5333877" src="img/info.png" border="0" /></a></td><td class="RosterRowCheckin">SUN 04FEB24 14:05</td><td class="RosterRowActivity">SBF</td><td class="RosterRowStart">SUN 04FEB24 14:05</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 04FEB24 20:00</td><td class="RosterRowCheckout">SUN 04FEB24 20:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="16"><table id="daynote2_91602449_5333877" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/info.png" border="0" /></td><td class="labelLight" align="center" colspan="5">Day Notes - 04FEB24</td>
+							</tr><tr class="selectrow1">
+								<td></td><td>B3 CI 1605z - CO 2305z</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">PDO</td><td class="RosterRowStart">MON 05FEB24 05:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">TUE 06FEB24 05:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">TUE 06FEB24 12:00</td><td class="RosterRowActivity">FF</td><td class="RosterRowStart">TUE 06FEB24 12:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">TUE 06FEB24 18:00</td><td class="RosterRowCheckout">TUE 06FEB24 18:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">H5</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">WED 07FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">THU 08FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">THU 08FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">FRI 09FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">FRI 09FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 10FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">SAT 10FEB24 09:00</td><td class="RosterRowActivity">S10</td><td class="RosterRowStart">SAT 10FEB24 09:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 10FEB24 17:00</td><td class="RosterRowCheckout">SAT 10FEB24 17:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">SUN 11FEB24 14:00</td><td class="RosterRowActivity">S15</td><td class="RosterRowStart">SUN 11FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 11FEB24 22:00</td><td class="RosterRowCheckout">SUN 11FEB24 22:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">MON 12FEB24 14:00</td><td class="RosterRowActivity">S15</td><td class="RosterRowStart">MON 12FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 12FEB24 22:00</td><td class="RosterRowCheckout">MON 12FEB24 22:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140022_27362901&#39;);"><img id="img_cob_91140022_27362901" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">TUE 13FEB24 12:20</td><td class="RosterRowActivity">HV5665</td><td class="RosterRowStart">TUE 13FEB24 13:20</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">LPA</td><td class="RosterRowEnd">TUE 13FEB24 18:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140022_27362901" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5665</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>SUA</td><td>Souani, Asmaê</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>KCH</td><td>Kuhn, Chavelle</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>NRG</td><td>Rijkenberg, Nathalie</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>RAX</td><td>Snoek, Ramon</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140021_27362851&#39;);"><img id="img_cob_91140021_27362851" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV5666</td><td class="RosterRowStart">TUE 13FEB24 18:50</td><td class="RosterRowDep">LPA</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">TUE 13FEB24 23:30</td><td class="RosterRowCheckout">WED 14FEB24 00:00</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140021_27362851" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5666</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>SUA</td><td>Souani, Asmaê</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>KCH</td><td>Kuhn, Chavelle</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>NRG</td><td>Rijkenberg, Nathalie</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>RAX</td><td>Snoek, Ramon</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W15</td><td class="RosterRowStart">WED 14FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">THU 15FEB24 14:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W15</td><td class="RosterRowStart">THU 15FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">FRI 16FEB24 14:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W15</td><td class="RosterRowStart">FRI 16FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 17FEB24 14:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">SAT 17FEB24 14:00</td><td class="RosterRowActivity">S15</td><td class="RosterRowStart">SAT 17FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 17FEB24 22:00</td><td class="RosterRowCheckout">SAT 17FEB24 22:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">SUN 18FEB24 14:00</td><td class="RosterRowActivity">S15</td><td class="RosterRowStart">SUN 18FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 18FEB24 22:00</td><td class="RosterRowCheckout">SUN 18FEB24 22:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140010_27369727&#39;);"><img id="img_cob_91140010_27369727" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">MON 19FEB24 15:45</td><td class="RosterRowActivity">HV6591</td><td class="RosterRowStart">MON 19FEB24 16:45</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">SZG</td><td class="RosterRowEnd">MON 19FEB24 18:20</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140010_27369727" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6591</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>JVL</td><td>van Loenen, Jeroen</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>HAI</td><td>Harzing, Lisette</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>MXJ</td><td>Jansen, Menno</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>NJG</td><td>Jagdew, Nerissa</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>KYV</td><td>ter Averst, Kaylee</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140009_27369612&#39;);"><img id="img_cob_91140009_27369612" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6592</td><td class="RosterRowStart">MON 19FEB24 19:05</td><td class="RosterRowDep">SZG</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 19FEB24 20:50</td><td class="RosterRowCheckout">MON 19FEB24 21:20</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140009_27369612" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6592</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>JVL</td><td>van Loenen, Jeroen</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>HAI</td><td>Harzing, Lisette</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>MXJ</td><td>Jansen, Menno</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>NJG</td><td>Jagdew, Nerissa</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>KYV</td><td>ter Averst, Kaylee</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140025_27362899&#39;);"><img id="img_cob_91140025_27362899" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">TUE 20FEB24 12:20</td><td class="RosterRowActivity">HV5665</td><td class="RosterRowStart">TUE 20FEB24 13:20</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">LPA</td><td class="RosterRowEnd">TUE 20FEB24 18:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140025_27362899" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5665</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>JLE</td><td>Leuvelink, Yle-Jan</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>LOE</td><td>Schuitman, Marloes</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>MXJ</td><td>Jansen, Menno</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>DIN</td><td>Dines, Bianca</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>YVW</td><td>Verweij, Sandy</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140024_27362849&#39;);"><img id="img_cob_91140024_27362849" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV5666</td><td class="RosterRowStart">TUE 20FEB24 18:50</td><td class="RosterRowDep">LPA</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">TUE 20FEB24 23:30</td><td class="RosterRowCheckout">WED 21FEB24 00:00</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140024_27362849" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5666</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>JLE</td><td>Leuvelink, Yle-Jan</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>LOE</td><td>Schuitman, Marloes</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>MXJ</td><td>Jansen, Menno</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>DIN</td><td>Dines, Bianca</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>YVW</td><td>Verweij, Sandy</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140027_27367116&#39;);"><img id="img_cob_91140027_27367116" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">WED 21FEB24 14:45</td><td class="RosterRowActivity">HV6145</td><td class="RosterRowStart">WED 21FEB24 15:45</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">ALC</td><td class="RosterRowEnd">WED 21FEB24 18:25</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140027_27367116" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6145</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>WOB</td><td>Beishuizen, Wouter</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>EDW</td><td>de Weers, Eline</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td>KI</td><td>ASF</td><td>Ali, Asfanyar</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>BOK</td><td>Brokke, Tiara</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td>KI</td><td>LTD</td><td>Dissel, Lotte</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140026_27367009&#39;);"><img id="img_cob_91140026_27367009" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6146</td><td class="RosterRowStart">WED 21FEB24 19:15</td><td class="RosterRowDep">ALC</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">WED 21FEB24 22:05</td><td class="RosterRowCheckout">WED 21FEB24 22:35</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140026_27367009" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6146</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>WOB</td><td>Beishuizen, Wouter</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>EDW</td><td>de Weers, Eline</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td>KI</td><td>ASF</td><td>Ali, Asfanyar</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td>L</td><td>BOK</td><td>Brokke, Tiara</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td>KI</td><td>LTD</td><td>Dissel, Lotte</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">THU 22FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">FRI 23FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">FRI 23FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 24FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">SAT 24FEB24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 25FEB24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140012_27365215&#39;);"><img id="img_cob_91140012_27365215" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">SUN 25FEB24 04:45</td><td class="RosterRowActivity">HV6005</td><td class="RosterRowStart">SUN 25FEB24 05:45</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">SZG</td><td class="RosterRowEnd">SUN 25FEB24 07:20</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140012_27365215" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6005</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>BHM</td><td>de Jongh, Bart</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>KDS</td><td>Koestal, Maaike (Maria)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>YZD</td><td>Zoutendijk, Yaël</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>BAX</td><td>Brand, Anne Mieke</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>OLX</td><td>Londeman, Melissa</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140011_27365188&#39;);"><img id="img_cob_91140011_27365188" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6006</td><td class="RosterRowStart">SUN 25FEB24 08:05</td><td class="RosterRowDep">SZG</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 25FEB24 09:50</td><td class="RosterRowCheckout">SUN 25FEB24 10:20</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140011_27365188" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6006</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>BHM</td><td>de Jongh, Bart</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">PU</td><td></td><td>KDS</td><td>Koestal, Maaike (Maria)</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA2</td><td></td><td>YZD</td><td>Zoutendijk, Yaël</td>
+							</tr><tr class="selectrow1">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>BAX</td><td>Brand, Anne Mieke</td>
+							</tr><tr class="selectrow0">
+								<td class="COBNotSameCrewType">CA1</td><td></td><td>OLX</td><td>Londeman, Melissa</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140029_27362707&#39;);"><img id="img_cob_91140029_27362707" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">MON 26FEB24 12:15</td><td class="RosterRowActivity">HV5661</td><td class="RosterRowStart">MON 26FEB24 13:15</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">LPA</td><td class="RosterRowEnd">MON 26FEB24 17:55</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140029_27362707" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5661</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>CVL</td><td>van Leeuwen, Steven</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140028_27362664&#39;);"><img id="img_cob_91140028_27362664" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV5662</td><td class="RosterRowStart">MON 26FEB24 18:45</td><td class="RosterRowDep">LPA</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 26FEB24 23:25</td><td class="RosterRowCheckout">MON 26FEB24 23:55</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140028_27362664" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV5662</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>CVL</td><td>van Leeuwen, Steven</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">TUE 27FEB24 14:00</td><td class="RosterRowActivity">S15</td><td class="RosterRowStart">TUE 27FEB24 14:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">TUE 27FEB24 22:00</td><td class="RosterRowCheckout">TUE 27FEB24 22:00</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig">SZ</td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140031_27367111&#39;);"><img id="img_cob_91140031_27367111" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin">WED 28FEB24 14:45</td><td class="RosterRowActivity">HV6145</td><td class="RosterRowStart">WED 28FEB24 15:45</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">ALC</td><td class="RosterRowEnd">WED 28FEB24 18:25</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140031_27367111" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6145</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>CAP</td><td>Capelle, Florian</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td><a title="Crew onboard" href="javascript:openStructure(&#39;cob_91140030_27367004&#39;);"><img id="img_cob_91140030_27367004" src="img/cob.gif" border="0" /></a></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">HV6146</td><td class="RosterRowStart">WED 28FEB24 19:15</td><td class="RosterRowDep">ALC</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">WED 28FEB24 22:05</td><td class="RosterRowCheckout">WED 28FEB24 22:35</td><td class="RosterRowAcType">73H</td><td class="RosterRowAcVersion">738H189</td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:0px;">
+						<td align="center" colspan="2"></td><td colspan="8"><table id="cob_91140030_27367004" class="TWBorderBottom" cellspacing="0" cellpadding="3" align="Left" border="0" style="width:450px;border-collapse:collapse;display:none;">
+							<tr class="bgDark">
+								<td class="labelLight" align="left"><img src="img/cob.gif" border="0" /></td><td class="labelLight" align="center" colspan="5">Crew onboard - HV6146</td>
+							</tr><tr class="selectrow1">
+								<td class="COBSameCrewType">FC</td><td></td><td>CAP</td><td>Capelle, Florian</td>
+							</tr><tr class="selectrow0">
+								<td class="COBSameCrewType">FOJ</td><td></td><td>GUA</td><td>Haug, Sander</td>
+							</tr>
+						</table></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin">THU 29FEB24 13:00</td><td class="RosterRowActivity">RSR</td><td class="RosterRowStart">THU 29FEB24 13:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">THU 29FEB24 22:59</td><td class="RosterRowCheckout">THU 29FEB24 22:59</td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">FRI 01MAR24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SAT 02MAR24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterEvenRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">SAT 02MAR24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">SUN 03MAR24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr><tr class="RosterOddRow" style="height:24px;">
+						<td></td><td class="RosterRowCheckin"></td><td class="RosterRowActivity">W05</td><td class="RosterRowStart">SUN 03MAR24 04:00</td><td class="RosterRowDep">AMS</td><td class="RosterRowArr">AMS</td><td class="RosterRowEnd">MON 04MAR24 04:00</td><td class="RosterRowCheckout"></td><td class="RosterRowAcType"></td><td class="RosterRowAcVersion"></td><td class="RosterRowDutyDesig"></td><td class="RosterRowAsgCat">FOJ</td><td></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td></td>
+			</tr><tr>
+				<td></td>
+			</tr><tr>
+				<td></td>
+			</tr><tr>
+				<td></td>
+			</tr><tr>
+				<td></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+    </div>
+    </form>
+    <span id="jsHolder"><script language='javascript'> 
+ function closeWizard(){
+frames['wizFrame'].location.href ='CWP_WizardNull.aspx';
+document.getElementById('wizFrame').style.display = 'none';}
+</script>
+</span>
+    <iframe src="CWP_wizardNull.aspx" name="wizFrame" id="wizFrame" style="display: none;
+        width: 620px; height: 440px; position: absolute; top: 50px; left: 75px; border: solid 1px #000000;"
+        frameborder="0"></iframe>
+    <iframe src="CWP_wizardNull.aspx" name="wizFrame" id="wizFrameMail" scrolling="auto"
+        style="display: none; width: 620px; height: 500px; position: absolute; top: 50px;
+        left: 75px; border: solid 1px #000000;" frameborder="0"></iframe>
+    <iframe src="CWP_wizardNull.aspx" name="wizFrame" id="wizFrameCreatePdf" scrolling="auto"
+        style="display: none; width: 0px; height: 0px; position: absolute; top: 50px;
+        left: 75px; border: solid 1px #000000;" frameborder="0"></iframe>
+</body>
+</html>

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TCrewApp: App {
+    @StateObject var dataViewModel: RosterDataViewModel = RosterDataViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(dataViewModel)
         }
     }
 }

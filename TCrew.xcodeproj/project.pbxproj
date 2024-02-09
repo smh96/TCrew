@@ -7,18 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00DC0002A2CEEF60034C461 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D00DBFFF2A2CEEF60034C461 /* SwiftSoup */; };
+		D03C0ABE2B70F60100EB8A83 /* Roster.html in Resources */ = {isa = PBXBuildFile; fileRef = D03C0ABD2B70F60100EB8A83 /* Roster.html */; };
+		D049BE792A49E549008D9086 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049BE782A49E549008D9086 /* Symbols.swift */; };
+		D049BE802A49EB2F008D9086 /* StaticHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049BE7F2A49EB2F008D9086 /* StaticHTMLParser.swift */; };
+		D056FB8F2B71807800FEEA53 /* dataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056FB8E2B71807700FEEA53 /* dataModel.swift */; };
+		D056FB912B7182B200FEEA53 /* dataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056FB902B7182B200FEEA53 /* dataViewModel.swift */; };
 		D05719E52A2BB98000252CB6 /* TCrewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05719E42A2BB98000252CB6 /* TCrewApp.swift */; };
 		D05719E72A2BB98000252CB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05719E62A2BB98000252CB6 /* ContentView.swift */; };
 		D05719E92A2BB98000252CB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05719E82A2BB98000252CB6 /* Assets.xcassets */; };
 		D05719EC2A2BB98000252CB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05719EB2A2BB98000252CB6 /* Preview Assets.xcassets */; };
+		D05719F32A2BB9E200252CB6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05719F22A2BB9E200252CB6 /* HomeView.swift */; };
+		D05719F52A2BBA6200252CB6 /* GetRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05719F42A2BBA6100252CB6 /* GetRosterView.swift */; };
+		D05719F72A2BBAEC00252CB6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05719F62A2BBAEC00252CB6 /* SettingsView.swift */; };
+		D0911E0B2B763C7300D55513 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0911E0A2B763C7300D55513 /* Helper.swift */; };
+		D097C73B2A2CA9C000C7BE50 /* RosterDutyLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097C73A2A2CA9C000C7BE50 /* RosterDutyLineView.swift */; };
+		D09ED6A42B7147E4002B6520 /* Example.html in Resources */ = {isa = PBXBuildFile; fileRef = D09ED6A32B7147E4002B6520 /* Example.html */; };
+		D0E7648C2A2CA22300F1DABB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E7648B2A2CA22300F1DABB /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D03C0ABD2B70F60100EB8A83 /* Roster.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Roster.html; sourceTree = "<group>"; };
+		D049BE782A49E549008D9086 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		D049BE7F2A49EB2F008D9086 /* StaticHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticHTMLParser.swift; sourceTree = "<group>"; };
+		D056FB8E2B71807700FEEA53 /* dataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataModel.swift; sourceTree = "<group>"; };
+		D056FB902B7182B200FEEA53 /* dataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataViewModel.swift; sourceTree = "<group>"; };
 		D05719E12A2BB98000252CB6 /* TCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05719E42A2BB98000252CB6 /* TCrewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCrewApp.swift; sourceTree = "<group>"; };
 		D05719E62A2BB98000252CB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D05719E82A2BB98000252CB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D05719EB2A2BB98000252CB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D05719F22A2BB9E200252CB6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D05719F42A2BBA6100252CB6 /* GetRosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRosterView.swift; sourceTree = "<group>"; };
+		D05719F62A2BBAEC00252CB6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D0911E0A2B763C7300D55513 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		D097C73A2A2CA9C000C7BE50 /* RosterDutyLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDutyLineView.swift; sourceTree = "<group>"; };
+		D09ED6A32B7147E4002B6520 /* Example.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Example.html; sourceTree = "<group>"; };
+		D0E7648B2A2CA22300F1DABB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +51,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00DC0002A2CEEF60034C461 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D049BE7E2A49EB21008D9086 /* Static Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D049BE7F2A49EB2F008D9086 /* StaticHTMLParser.swift */,
+			);
+			path = "Static Parser";
+			sourceTree = "<group>";
+		};
+		D049BE812A49ED97008D9086 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D056FB8C2B71805600FEEA53 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D056FB8D2B71806500FEEA53 /* Model */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		D056FB8D2B71806500FEEA53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D056FB8E2B71807700FEEA53 /* dataModel.swift */,
+				D056FB902B7182B200FEEA53 /* dataViewModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D05719D82A2BB97F00252CB6 = {
 			isa = PBXGroup;
 			children = (
@@ -52,9 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				D05719E42A2BB98000252CB6 /* TCrewApp.swift */,
-				D05719E62A2BB98000252CB6 /* ContentView.swift */,
-				D05719E82A2BB98000252CB6 /* Assets.xcassets */,
+				D05719F82A2BBBE100252CB6 /* Features */,
+				D07412AA2A3C780E0038EEEC /* Resources */,
 				D05719EA2A2BB98000252CB6 /* Preview Content */,
+				D05719E82A2BB98000252CB6 /* Assets.xcassets */,
 			);
 			path = TCrew;
 			sourceTree = "<group>";
@@ -65,6 +124,153 @@
 				D05719EB2A2BB98000252CB6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D05719F82A2BBBE100252CB6 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D056FB8C2B71805600FEEA53 /* Common */,
+				D0DB72522A3751DA00754E1E /* Home */,
+				D0DB725A2A3752E200754E1E /* Get Roster */,
+				D0DB72562A37528600754E1E /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D07412AA2A3C780E0038EEEC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0911E092B763C6800D55513 /* Helpers */,
+				D049BE812A49ED97008D9086 /* Model */,
+				D049BE7E2A49EB21008D9086 /* Static Parser */,
+				D07412AF2A3C79250038EEEC /* Static HTML */,
+				D0E7648A2A2CA1EF00F1DABB /* API */,
+				D049BE782A49E549008D9086 /* Symbols.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D07412AF2A3C79250038EEEC /* Static HTML */ = {
+			isa = PBXGroup;
+			children = (
+				D03C0ABD2B70F60100EB8A83 /* Roster.html */,
+				D09ED6A32B7147E4002B6520 /* Example.html */,
+			);
+			path = "Static HTML";
+			sourceTree = "<group>";
+		};
+		D0911E092B763C6800D55513 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0911E0A2B763C7300D55513 /* Helper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D0DB72522A3751DA00754E1E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D0DB72552A37526D00754E1E /* Views */,
+				D0DB72542A37526800754E1E /* Model */,
+				D0DB72532A37525B00754E1E /* View Models */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		D0DB72532A37525B00754E1E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		D0DB72542A37526800754E1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D0DB72552A37526D00754E1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D05719E62A2BB98000252CB6 /* ContentView.swift */,
+				D05719F22A2BB9E200252CB6 /* HomeView.swift */,
+				D097C73A2A2CA9C000C7BE50 /* RosterDutyLineView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D0DB72562A37528600754E1E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D0DB72582A3752B500754E1E /* View Models */,
+				D0DB72572A3752B100754E1E /* Views */,
+				D0DB72592A3752BA00754E1E /* Model */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		D0DB72572A3752B100754E1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D05719F62A2BBAEC00252CB6 /* SettingsView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D0DB72582A3752B500754E1E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		D0DB72592A3752BA00754E1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D0DB725A2A3752E200754E1E /* Get Roster */ = {
+			isa = PBXGroup;
+			children = (
+				D0DB725B2A3752E900754E1E /* Views */,
+				D0DB725D2A3752F200754E1E /* Models */,
+				D0DB725C2A3752ED00754E1E /* View Models */,
+			);
+			name = "Get Roster";
+			sourceTree = "<group>";
+		};
+		D0DB725B2A3752E900754E1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D05719F42A2BBA6100252CB6 /* GetRosterView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D0DB725C2A3752ED00754E1E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		D0DB725D2A3752F200754E1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D0E7648A2A2CA1EF00F1DABB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D0E7648B2A2CA22300F1DABB /* NetworkManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +289,9 @@
 			dependencies = (
 			);
 			name = TCrew;
+			packageProductDependencies = (
+				D00DBFFF2A2CEEF60034C461 /* SwiftSoup */,
+			);
 			productName = TCrew;
 			productReference = D05719E12A2BB98000252CB6 /* TCrew.app */;
 			productType = "com.apple.product-type.application";
@@ -95,7 +304,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					D05719E02A2BB98000252CB6 = {
 						CreatedOnToolsVersion = 14.2;
@@ -111,6 +320,9 @@
 				Base,
 			);
 			mainGroup = D05719D82A2BB97F00252CB6;
+			packageReferences = (
+				D00DBFFE2A2CEEF60034C461 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = D05719E22A2BB98000252CB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +339,8 @@
 			files = (
 				D05719EC2A2BB98000252CB6 /* Preview Assets.xcassets in Resources */,
 				D05719E92A2BB98000252CB6 /* Assets.xcassets in Resources */,
+				D03C0ABE2B70F60100EB8A83 /* Roster.html in Resources */,
+				D09ED6A42B7147E4002B6520 /* Example.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +351,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D049BE792A49E549008D9086 /* Symbols.swift in Sources */,
+				D0E7648C2A2CA22300F1DABB /* NetworkManager.swift in Sources */,
+				D05719F72A2BBAEC00252CB6 /* SettingsView.swift in Sources */,
+				D056FB8F2B71807800FEEA53 /* dataModel.swift in Sources */,
+				D056FB912B7182B200FEEA53 /* dataViewModel.swift in Sources */,
+				D097C73B2A2CA9C000C7BE50 /* RosterDutyLineView.swift in Sources */,
+				D05719F52A2BBA6200252CB6 /* GetRosterView.swift in Sources */,
+				D05719F32A2BB9E200252CB6 /* HomeView.swift in Sources */,
 				D05719E72A2BB98000252CB6 /* ContentView.swift in Sources */,
+				D049BE802A49EB2F008D9086 /* StaticHTMLParser.swift in Sources */,
 				D05719E52A2BB98000252CB6 /* TCrewApp.swift in Sources */,
+				D0911E0B2B763C7300D55513 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +405,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -241,6 +466,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -339,6 +565,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D00DBFFE2A2CEEF60034C461 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D00DBFFF2A2CEEF60034C461 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D00DBFFE2A2CEEF60034C461 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D05719D92A2BB97F00252CB6 /* Project object */;
 }
